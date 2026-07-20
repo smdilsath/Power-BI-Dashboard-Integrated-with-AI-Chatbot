@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics · AI Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────────────── -->
+<header>
+  <div class="header-left">
+    <div class="logo-mark">
+      <svg viewBox="0 0 16 16" fill="none">
+        <rect x="2" y="2" width="5" height="5" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="9" y="2" width="5" height="5" rx="1.5" fill="white" opacity=".5"/>
+        <rect x="2" y="9" width="5" height="5" rx="1.5" fill="white" opacity=".5"/>
+        <rect x="9" y="9" width="5" height="5" rx="1.5" fill="white" opacity=".9"/>
+      </svg>
+    </div>
+    <span class="app-title">Analytics <span>/ AI Assistant</span></span>
+    <div class="status-badge">
+      <span class="status-dot"></span>Live
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="header-btn">Export</button>
+    <button class="header-btn">Share</button>
+  </div>
+</header>
+
+<!-- ── Workspace ──────────────────────────────────────────── -->
+<div class="workspace">
+
+  <!-- Dashboard pane -->
+  <div class="dashboard-pane">
+    <div class="pane-header">
+      <span class="pane-label">Power BI Report</span>
+      <div class="pane-actions">
+        <button class="icon-btn" title="Refresh" id="refresh-btn">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M13.5 8A5.5 5.5 0 1 1 8 2.5c1.8 0 3.4.86 4.4 2.2" stroke-linecap="round"/>
+            <path d="M12 2l.5 2.7L15 4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="icon-btn" title="Fullscreen" id="fullscreen-btn">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="report-frame-wrap" id="report-wrap">
+      {{ powerbi_iframe | safe }}
+    </div>
+  </div>
+
+  <!-- Chat pane -->
+  <div class="chat-pane">
+    <div class="pane-header">
+      <span class="pane-label">AI Assistant</span>
+      <div class="pane-actions">
+        <button class="icon-btn" title="Clear chat" id="clear-btn">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M3 4h10M6 4V3h4v1M5 4l.5 9h5L11 4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chat-box">
+      <div class="msg bot">
+        <span class="msg-sender">Assistant</span>
+        <div class="msg-bubble">
+          Hi! I can answer questions about your dashboard data. Try asking about trends, totals, or specific metrics.
+        </div>
+      </div>
+    </div>
+
+    <div class="typing-indicator" id="typing">
+      <span class="typing-label">Assistant</span>
+      <div class="typing-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <div class="input-hints">
+        <div class="hint-chip" data-hint="Top revenue sources?">Top revenue sources?</div>
+        <div class="hint-chip" data-hint="Monthly trend">Monthly trend</div>
+        <div class="hint-chip" data-hint="Summarise report">Summarise report</div>
+      </div>
+      <div class="input-row">
+        <textarea id="user-input" rows="1" placeholder="Ask about your data…"></textarea>
+        <button class="send-btn" id="send-btn" title="Send">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M2 8h12M8 3l6 5-6 5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>
