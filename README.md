@@ -69,4 +69,4 @@ Data Visualization
 Artificial Intelligence
 It demonstrates how traditional BI dashboards can be enhanced with AI to improve decision-making and user interaction.
 
-
+DEMO VEDIO=https://www.linkedin.com/posts/sm-dilsath-sm_powerbi-artificialintelligence-llm-activity-7470785942086344704-lDr3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEHV5NgB1Ib2A0__3UdpwYIgQJdQbnsigKo
